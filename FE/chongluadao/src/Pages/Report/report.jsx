@@ -1,13 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { ThemeContext } from "../../Context/ThemesContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import axios from "axios";
 
 function Report() {
   const context = useContext(ThemeContext);
   const [value, setValue] = useState("");
-  console.log(value);
+  const [title, setTitle] = useState("");
+  const [link, setLink] = useState("");
+  const [category, setCategory] = useState("");
+
+  const REPORTAPI = async (title, link, category) => {
+    try {
+      const respone = await axios.post(
+        "https://api.nhuthangluu.id.vn/api/reports",
+        {
+          title: title,
+          link: link,
+          category: category,
+          description: "hello",
+        }
+      );
+    } catch (error) {}
+  };
 
   return (
     <div className={`${context.themes}`}>
@@ -32,7 +49,7 @@ function Report() {
         </p>
 
         <div className="mt-[20px] dark:text-white">
-          <form action="/" method="post">
+          <div>
             <div className="">
               <p className="text-[16px] font-medium font-OpenSans">
                 <span className="underline">Cách 1:</span> Báo cáo bằng cách
@@ -48,8 +65,12 @@ function Report() {
 
                     <input
                       type="text"
-                      className="lg:w-[500px] w-full h-[30px] border rounded-2xl p-2 "
+                      className="lg:w-[500px] w-full h-[30px] border rounded-2xl p-2 text-black "
                       placeholder="Tiêu đề của báo cáo"
+                      value={title}
+                      onChange={(e) => {
+                        setTitle(e.target.value);
+                      }}
                     />
                   </div>
 
@@ -60,8 +81,12 @@ function Report() {
 
                     <input
                       type="text"
-                      className="lg:w-[500px] w-full h-[30px] border rounded-2xl p-2"
+                      className="lg:w-[500px] w-full h-[30px] border rounded-2xl p-2 text-black"
                       placeholder="https://www.trangwebluadao.com/"
+                      value={link}
+                      onChange={(e) => {
+                        setLink(e.target.value);
+                      }}
                     />
                   </div>
                 </div>
@@ -76,6 +101,10 @@ function Report() {
                       <input
                         type="radio"
                         name="scam"
+                        value="Giả mạo"
+                        onChange={(e) => {
+                          setCategory(e.target.value);
+                        }}
                         id=""
                         className="w-[30px] h-[30px]"
                       />
@@ -85,7 +114,11 @@ function Report() {
                       <input
                         type="radio"
                         name="scam"
+                        value="Lừa đảo"
                         id=""
+                        onChange={(e) => {
+                          setCategory(e.target.value);
+                        }}
                         className="w-[30px] h-[30px]"
                       />
                       <p>Lừa đảo</p>
@@ -94,7 +127,11 @@ function Report() {
                       <input
                         type="radio"
                         name="scam"
+                        value="Chứa mã độc"
                         id=""
+                        onChange={(e) => {
+                          setCategory(e.target.value);
+                        }}
                         className="w-[30px] h-[30px]"
                       />
                       <p>Chứa mã độc</p>
@@ -103,7 +140,11 @@ function Report() {
                       <input
                         type="radio"
                         name="scam"
+                        value="Nội dung xấu"
                         id=""
+                        onChange={(e) => {
+                          setCategory(e.target.value);
+                        }}
                         className="w-[30px] h-[30px]"
                       />
                       <p>Nội dung xấu</p>
@@ -112,7 +153,11 @@ function Report() {
                       <input
                         type="radio"
                         name="scam"
+                        value="Khác"
                         id=""
+                        onChange={(e) => {
+                          setCategory(e.target.value);
+                        }}
                         className="w-[30px] h-[30px]"
                       />
                       <p>Khác</p>
@@ -194,6 +239,9 @@ function Report() {
                     id="submit_btn"
                     type="submit"
                     className="w-full bg-green-500 p-2 rounded-lg text-white text-[18px]"
+                    onClick={() => {
+                      REPORTAPI(title, link, category);
+                    }}
                   >
                     Gửi báo cáo
                   </button>
@@ -214,7 +262,7 @@ function Report() {
                 />
               </div>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

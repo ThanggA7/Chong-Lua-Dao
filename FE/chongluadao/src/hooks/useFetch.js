@@ -8,7 +8,7 @@ function useFetch(url) {
       try {
         const fetchAPI = await fetch(url);
         const res = await fetchAPI.json();
-        setData(res.data);
+        setData(res);
       } catch (error) {}
     };
     API(url);
