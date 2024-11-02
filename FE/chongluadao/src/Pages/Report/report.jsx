@@ -4,6 +4,7 @@ import { ThemeContext } from "../../Context/ThemesContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
+import { div } from "framer-motion/m";
 
 function Report() {
   const context = useContext(ThemeContext);
@@ -11,23 +12,34 @@ function Report() {
   const [title, setTitle] = useState("");
   const [link, setLink] = useState("");
   const [category, setCategory] = useState("");
+  const [veri, setVeri] = useState("");
+  console.log(veri);
 
-  const REPORTAPI = async (title, link, category) => {
+  const REPORTAPI = async (title, link, category, value) => {
     try {
+      if (title == " " || link == " " || category == "" || value == " ") {
+        setVeri("Vui lòng điền đầy đủ thông tin !");
+      } else {
+        setVeri("");
+      }
       const respone = await axios.post(
         "https://api.nhuthangluu.id.vn/api/reports",
         {
           title: title,
           link: link,
           category: category,
-          description: "hello",
+          description: value,
         }
       );
     } catch (error) {}
   };
 
+  if (title == "") {
+    console.log("a");
+  }
+
   return (
-    <div className={`${context.themes}`}>
+    <div className={`${context.themes} relative`}>
       <h1 className="container p-2 text-[36px] font-medium dark:text-white">
         Cách báo cáo
       </h1>
@@ -72,6 +84,7 @@ function Report() {
                         setTitle(e.target.value);
                       }}
                     />
+                    {veri && <p className="">Vui lòng nhập vào tường này !</p>}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -88,6 +101,8 @@ function Report() {
                         setLink(e.target.value);
                       }}
                     />
+
+                    {veri && <p className="">Vui lòng nhập vào tường này !</p>}
                   </div>
                 </div>
 
@@ -163,6 +178,7 @@ function Report() {
                       <p>Khác</p>
                     </div>
                   </div>
+                  {veri && <p className="">Vui lòng nhập vào tường này !</p>}
                 </div>
 
                 <div className="mt-[20px]">
@@ -183,6 +199,8 @@ function Report() {
                     value={value}
                     onChange={setValue}
                   />
+
+                  {veri && <p className="">Vui lòng nhập vào tường này !</p>}
                 </div>
 
                 <div className="mt-[10px]">
@@ -240,7 +258,7 @@ function Report() {
                     type="submit"
                     className="w-full bg-green-500 p-2 rounded-lg text-white text-[18px]"
                     onClick={() => {
-                      REPORTAPI(title, link, category);
+                      REPORTAPI(title, link, category, value);
                     }}
                   >
                     Gửi báo cáo

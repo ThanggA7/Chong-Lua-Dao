@@ -52,14 +52,6 @@ function Header() {
             </li>
             <li className="hover:text-[green]">
               <NavLink
-                to="/search"
-                className={({ isActive }) => (isActive ? "text-[green]" : "")}
-              >
-                Tìm kiếm
-              </NavLink>
-            </li>
-            <li className="hover:text-[green]">
-              <NavLink
                 to="/report"
                 className={({ isActive }) => (isActive ? "text-[green]" : "")}
               >
@@ -124,7 +116,6 @@ function Header() {
                 {[
                   "/",
                   "/download-extension",
-                  "/search",
                   "/report",
                   "/data",
                   "/faq",
