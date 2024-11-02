@@ -40,7 +40,15 @@ function ReportValue() {
       console.error("Error approving report:", error);
     }
   };
-
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(
+        `https://api.nhuthangluu.id.vn/api/admin/reports/${id}/delete`
+      );
+      setData((prevData) => prevData.filter((report) => report._id !== id));
+      setIsModalVisible(false);
+    } catch (error) {}
+  };
   const showModal = (report) => {
     setSelectedReport(report);
     setIsModalVisible(true);
@@ -83,8 +91,14 @@ function ReportValue() {
             >
               Duyệt Đơn
             </Button>,
+            <Button
+              key="close"
+              onClick={() => handleDelete(selectedReport._id)}
+            >
+              Xóa đơn không hợp lệ
+            </Button>,
             <Button key="close" onClick={() => setIsModalVisible(false)}>
-              Hủy Duyệt Đơn
+              Đóng
             </Button>,
           ]}
         >
