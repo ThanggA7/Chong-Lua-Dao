@@ -42,7 +42,8 @@ function ValueScam() {
     <div className="mt-[20px]">
       <div className="flex items-center gap-1">
         <input
-          className="w-[250px] text-black text-[16px] font-Roboto "
+
+          className="w-[250px] text-black text-[16px] font-Roboto border-black  rounded-sm h-[30px]"
           placeholder="Tìm kiếm thông tin lừa đảo..."
           value={delvalue}
           type="text"
@@ -64,9 +65,9 @@ function ValueScam() {
             setResetPaginationToggle(!resetPaginationToggle);
             setDelvalue("");
           }}
-          className="px-2 border"
+          className="px-2 border h-[30px] border-black dark:border-white"
         >
-          <FontAwesomeIcon className="text-white" icon={faX} />
+          <FontAwesomeIcon className="dark:text-white" icon={faX} />
         </button>
       </div>
       <div className="mt-[20px]">

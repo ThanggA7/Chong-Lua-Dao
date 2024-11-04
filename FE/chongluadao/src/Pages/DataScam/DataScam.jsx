@@ -74,7 +74,6 @@ function DataScam() {
           </div>
         ) : (
           <div>
-            <Char />
             <div className="report mt-[20px]">
               <p className="dark:text-white font-Roboto text-[17px] text-black">
                 Cách báo cáo, phản ánh website lừa đảo, giả mạo hoặc nội dung
