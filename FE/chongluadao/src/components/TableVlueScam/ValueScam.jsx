@@ -15,7 +15,10 @@ function ValueScam() {
   useEffect(() => {
     if (datascam.length > 0) {
       const formattedData = datascam.map((data) => ({
-        title: data.createdAt,
+        title:
+          new Date(data.createdAt).toLocaleDateString() +
+          " " +
+          new Date(data.createdAt).toLocaleTimeString(),
         link: data.link,
         form: data.category,
       }));
@@ -42,7 +45,6 @@ function ValueScam() {
     <div className="mt-[20px]">
       <div className="flex items-center gap-1">
         <input
-
           className="w-[250px] text-black text-[16px] font-Roboto border-black  rounded-sm h-[30px]"
           placeholder="Tìm kiếm thông tin lừa đảo..."
           value={delvalue}

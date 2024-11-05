@@ -8,6 +8,7 @@ import SearchInput from "../../components/SearchInput/searchinput";
 
 function Home() {
   const context = useContext(ThemeContext);
+
   return (
     <div className={`container px-3 ${context.themes}`}>
       <div>

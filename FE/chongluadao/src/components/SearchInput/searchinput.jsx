@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Button, Modal } from "antd";
-import { p } from "framer-motion/client";
+import axios from "axios";
 function SearchInput() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
+  const [link, setLink] = useState("");
+  const [valuerp, setValueRP] = useState("");
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -19,6 +21,25 @@ function SearchInput() {
       setError("Vui lòng nhập đầy đủ thông tin !");
     }
   };
+
+  useEffect(() => {
+    try {
+      const GetDataReports = async () => {
+        const resapi = await axios.get(
+          `https://api.nhuthangluu.id.vn/api/search?link=${link}`
+        );
+        if (link) {
+          setValueRP(resapi.data);
+        }
+      };
+
+      GetDataReports();
+    } catch (error) {}
+  }, [link]);
+  if (valuerp !== null) {
+    console.log(valuerp._id);
+  }
+
   return (
     <div className="flex items-center flex-col justify-center p-5">
       <p className="md:text-[14px] text-[12px] font-light font-Roboto dark:text-[#E2E8F0]">
@@ -34,6 +55,7 @@ function SearchInput() {
           className="w-full h-full outline-none bg-transparent font-Roboto px-[6px] text-[14px] dark:text-white "
           onChange={(e) => {
             setValue(e.target.value);
+            setLink(e.target.value);
           }}
           placeholder="Nhập vào đường dẫn mà bạn muốn kiểm tra độ an toàn, ví dụ: google.com"
         />
@@ -44,23 +66,40 @@ function SearchInput() {
           Search
         </button>
       </div>
-      {error && <p className="text-red-400 text-[12px]">{error}</p> }
-      <Modal
-        title="Thông tin tìm kiếm !"
-        open={isModalOpen}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        <p>
-          Website https://*.vingroupinternational.vn/ có thể không an toàn theo
-          đánh giá của cộng đồng
-        </p>
-        <p>
-          Website này có thể không an toàn theo đánh giá của cộng đồng, bạn
-          không nên truy cập. Hãy Cài Đặt tiện ích mở rộng ChongLuaDao.vn vào
-          trình duyệt của mình để được bảo vệ một cách tốt nhất.
-        </p>
-      </Modal>
+      {error && <p className="text-red-400 text-[12px]">{error}</p>}
+      {valuerp !== null ? (
+        <Modal
+          title="Thông tin tìm kiếm !"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <p>
+            Website {valuerp._id} có thể không an toàn theo đánh giá của cộng
+            đồng
+          </p>
+          <p>
+            Website này có thể không an toàn theo đánh giá của cộng đồng, bạn
+            không nên truy cập. Hãy Cài Đặt tiện ích mở rộng ChongLuaDao.vn vào
+            trình duyệt của mình để được bảo vệ một cách tốt nhất.
+          </p>
+        </Modal>
+      ) : (
+        <Modal
+          title="Thông tin tìm kiếm !"
+          open={isModalOpen}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <p>Website {link} an toàn</p>
+          <p>
+            Website này an toàn, tuy nhiên nó có thể thay đổi trong tương lai.
+            Vì vậy chúng tôi khuyến khích bạn nên cài đặt extension
+            Chongluadao.vn vào trình duyệt của mình để được bảo vệ theo thời
+            gian thực.
+          </p>
+        </Modal>
+      )}
 
       <div className="w-1/2 h-[1px] bg-[#398C43] my-[1em]"></div>
     </div>
