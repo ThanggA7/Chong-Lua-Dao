@@ -26,7 +26,7 @@ function SearchInput() {
     try {
       const GetDataReports = async () => {
         const resapi = await axios.get(
-          `https://api.nhuthangluu.id.vn/api/search?link=${link}`
+          `https://api.nhuthangluu.id.vn/api/search?url=${link}`
         );
         if (link) {
           setValueRP(resapi.data);
@@ -36,6 +36,7 @@ function SearchInput() {
       GetDataReports();
     } catch (error) {}
   }, [link]);
+
   if (valuerp !== null) {
     console.log(valuerp._id);
   }
@@ -75,7 +76,7 @@ function SearchInput() {
           onCancel={handleCancel}
         >
           <p>
-            Website {valuerp._id} có thể không an toàn theo đánh giá của cộng
+            Website {valuerp.url} có thể không an toàn theo đánh giá của cộng
             đồng
           </p>
           <p>

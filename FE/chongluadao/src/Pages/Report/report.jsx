@@ -26,7 +26,7 @@ function Report() {
         "https://api.nhuthangluu.id.vn/api/reports",
         {
           title: title,
-          link: link,
+          url: link,
           category: category,
           description: value,
         }
@@ -84,7 +84,11 @@ function Report() {
                         setTitle(e.target.value);
                       }}
                     />
-                    {veri && <p className="text-[red] text-[13px]">Vui lòng nhập vào tường này !</p>}
+                    {veri && (
+                      <p className="text-[red] text-[13px]">
+                        Vui lòng nhập vào tường này !
+                      </p>
+                    )}
                   </div>
 
                   <div className="flex flex-col gap-2">
@@ -102,7 +106,11 @@ function Report() {
                       }}
                     />
 
-                    {veri && <p className="text-[red] text-[13px]">Vui lòng nhập vào tường này !</p>}
+                    {veri && (
+                      <p className="text-[red] text-[13px]">
+                        Vui lòng nhập vào tường này !
+                      </p>
+                    )}
                   </div>
                 </div>
 
@@ -178,7 +186,11 @@ function Report() {
                       <p>Khác</p>
                     </div>
                   </div>
-                  {veri && <p className="text-[red] text-[13px]">Vui lòng nhập vào tường này !</p>}
+                  {veri && (
+                    <p className="text-[red] text-[13px]">
+                      Vui lòng nhập vào tường này !
+                    </p>
+                  )}
                 </div>
 
                 <div className="mt-[20px]">
@@ -200,7 +212,11 @@ function Report() {
                     onChange={setValue}
                   />
 
-                  {veri && <p className="text-[red] text-[13px]">Vui lòng nhập vào tường này !</p>}
+                  {veri && (
+                    <p className="text-[red] text-[13px]">
+                      Vui lòng nhập vào tường này !
+                    </p>
+                  )}
                 </div>
 
                 <div className="mt-[10px]">

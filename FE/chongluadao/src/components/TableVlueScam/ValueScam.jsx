@@ -19,7 +19,7 @@ function ValueScam() {
           new Date(data.createdAt).toLocaleDateString() +
           " " +
           new Date(data.createdAt).toLocaleTimeString(),
-        link: data.link,
+        link: data.url,
         form: data.category,
       }));
       setSearch(formattedData);
