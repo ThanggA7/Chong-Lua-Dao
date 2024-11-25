@@ -4,7 +4,6 @@ import { ThemeContext } from "../../Context/ThemesContext";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import axios from "axios";
-import { div } from "framer-motion/m";
 
 function Report() {
   const context = useContext(ThemeContext);
@@ -13,6 +12,8 @@ function Report() {
   const [link, setLink] = useState("");
   const [category, setCategory] = useState("");
   const [veri, setVeri] = useState("");
+  const [success, setSuccess] = useState("");
+  const [notification, setNotification] = useState("");
   console.log(veri);
 
   const REPORTAPI = async (title, link, category, value) => {
@@ -31,18 +32,26 @@ function Report() {
           description: value,
         }
       );
+      setSuccess(respone);
     } catch (error) {}
   };
 
-  if (title == "") {
-    console.log("a");
-  }
+  const handleSubmit = () => {
+    REPORTAPI(title, link, category, value);
+    setNotification("Báo cáo của bạn đã được gửi!");
+    setTimeout(() => {
+      setNotification("");
+    }, 3000);
+  };
+
+  console.log(success);
 
   return (
     <div className={`${context.themes} relative`}>
       <h1 className="container p-2 text-[36px] font-medium dark:text-white">
         Cách báo cáo
       </h1>
+
       <div className="w-full h-[1px] bg-[#D4CFC5]"></div>
       <div className="container p-2">
         <p className="font-Roboto text-[18px] mt-[10px] dark:text-white">
@@ -224,7 +233,10 @@ function Report() {
                     Điều khoản sử dụng *
                   </p>
 
-                  <div className="p-3 border mt-2 overflow-auto h-[200px] bg-[#EEEEEE] dark:bg-transparent">
+                  <div className="p-3 border mt-2 overflow-auto h-[200px] bg-[#EEEEEE] dark:bg-[#191B1D] rounded-[10px]">
+                    <p className="font-Roboto text-[14px] dark:text-white">
+                      1. Vui lòng không gửi các báo cáo sai sự thật...
+                    </p>
                     <p>
                       1. Bạn đồng ý rằng bài báo cáo của bạn sẽ được chia sẻ
                       thông tin cho các bên thứ ba bao gồm ChongLuaDao và các tổ
@@ -259,44 +271,32 @@ function Report() {
                       sự và hình sự.
                     </p>
                   </div>
+                  <p className="mt-2 text-[13px]">
+                    Bằng việc gửi báo cáo, bạn đã đồng ý với các{" "}
+                    <span className="font-medium text-[#099D4C]">
+                      Điều khoản sử dụng
+                    </span>{" "}
+                    của chúng tôi.
+                  </p>
                 </div>
 
-                <div className="flex items-center mt-[10px] gap-1">
-                  <input type="checkbox" name="verify" id="" />
-                  <label className="text-[14px] font-medium">
-                    Tôi đã đọc và đồng ý với điều khoản sử dụng.
-                  </label>
-                </div>
-
-                <div className="flex items-center justify-center p-3 ">
+                <div className="text-center mt-[20px]">
                   <button
-                    id="submit_btn"
-                    type="submit"
-                    className="w-full bg-green-500 p-2 rounded-lg text-white text-[18px]"
-                    onClick={() => {
-                      REPORTAPI(title, link, category, value);
-                    }}
+                    onClick={handleSubmit}
+                    className="w-[250px] bg-[#006400] py-[8px] rounded-xl text-white"
                   >
                     Gửi báo cáo
                   </button>
                 </div>
               </div>
             </div>
-
-            <div className="mt-[10px]">
-              <h2 className="text-[16px] font-medium font-OpenSans">
-                <span className="underline">Cách 2</span>: Báo cáo thông qua
-                tiện ích của ChongLuaDao trên trình duyệt web máy tính. Tải về
-                tiện ích miễn phí tại đây.
-              </h2>
-              <div className="flex items-center justify-center mt-[20px]">
-                <img
-                  src="https://chongluadao.vn/wp-content/uploads/2021/04/user-report-1.gif"
-                  alt=""
-                />
-              </div>
-            </div>
           </div>
+
+          {success && (
+            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 bg-green-500 text-white p-3 rounded-xl">
+              {notification}
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -5,8 +5,9 @@ function SearchInput() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
-  const [link, setLink] = useState("");
+  const [link, setLink] = useState("a");
   const [valuerp, setValueRP] = useState("");
+  const [filter, setFilter] = useState("");
   const handleOk = () => {
     setIsModalOpen(false);
   };
@@ -30,16 +31,13 @@ function SearchInput() {
         );
         if (link) {
           setValueRP(resapi.data);
+          setFilter(resapi);
         }
       };
 
       GetDataReports();
     } catch (error) {}
   }, [link]);
-
-  if (valuerp !== null) {
-    console.log(valuerp._id);
-  }
 
   return (
     <div className="flex items-center flex-col justify-center p-5">

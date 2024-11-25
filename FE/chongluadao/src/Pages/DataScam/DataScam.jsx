@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../Context/ThemesContext";
 import ValueScam from "../../components/TableVlueScam/ValueScam";
 import Char from "../../components/CharJS/Char";
+import ValueCSC from "../../components/TableVlueScam/ValueCSC";
 
 function DataScam() {
   const context = useContext(ThemeContext);
@@ -9,7 +10,7 @@ function DataScam() {
   const [value, setValue] = useState([]);
 
   return (
-    <div className={`container p-3  ${context.themes} lg:h-[100vh] `}>
+    <div className={`container p-3  ${context.themes} lg:min-h-[70vh] `}>
       <h1 className="text-[24px] dark:text-white text-black">Thống kê</h1>
 
       <div className="w-full h-[1px] bg-[#dedeed8f] my-[1em]"></div>
@@ -39,7 +40,7 @@ function DataScam() {
             } `}
             type="button"
           >
-            Danh sách lừa đảo(nguồn khác)
+            Danh sách lừa đảo(nguồn chongluadao.vn)
           </button>
         </div>
         {tab === "active" ? (
@@ -98,7 +99,7 @@ function DataScam() {
                 Ngân hàng dữ liệu của ChongLuaDao
               </p>
 
-              <ValueScam />
+              <ValueCSC />
             </div>
           </div>
         )}

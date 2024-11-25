@@ -3,29 +3,34 @@ import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
-import { use } from "framer-motion/client";
-
-function ValueScam() {
+import axios from "axios";
+function ValueCSC() {
   const [delvalue, setDelvalue] = useState("");
   const [newvalue, setnewValue] = useState([]);
-  const [total, setTotal] = useState("");
+  const [valueCSC, setvalueCSC] = useState([]);
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [search, setSearch] = useState([]);
-  const datascam = useFetch("https://api.nhuthangluu.id.vn/api/reports");
+  useEffect(() => {
+    const CSC = async () => {
+      try {
+        const csc = await axios.get(
+          "https://chongluadao.vn/datatables-server-side-processing?type=blacklist&draw=1&columns%5B0%5D%5Bdata%5D=0&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=1&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=2&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=false&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=3&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=4&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=17012&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1732542948227"
+        );
+
+        setvalueCSC(csc.data.data);
+      } catch (error) {}
+    };
+    CSC();
+  }, []);
 
   useEffect(() => {
-    if (datascam.length > 0) {
-      const formattedData = datascam.map((data) => ({
-        title:
-          new Date(data.createdAt).toLocaleDateString() +
-          " " +
-          new Date(data.createdAt).toLocaleTimeString(),
-        link: data.url,
-        form: data.category,
-      }));
-      setSearch(formattedData);
-    }
-  }, [datascam]);
+    const formattedData = valueCSC.map((data) => ({
+      title: data[0],
+      link: data[1],
+      form: data[4],
+    }));
+    setSearch(formattedData);
+  }, [valueCSC]);
 
   const columns = [
     {
@@ -86,4 +91,4 @@ function ValueScam() {
   );
 }
 
-export default ValueScam;
+export default ValueCSC;
