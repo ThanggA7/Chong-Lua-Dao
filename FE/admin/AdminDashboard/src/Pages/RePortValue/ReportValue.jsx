@@ -107,7 +107,7 @@ function ReportValue() {
               <p>Tiêu đề báo cáo : {selectedReport.title}</p>
               <p className="mt-1 leading-4">
                 Đường dẫn liên kết (link) của trang cần báo cáo :{" "}
-                <a href={selectedReport.link}>{selectedReport.link}</a>
+                <a href={selectedReport.url}>{selectedReport.url}</a>
               </p>
               <p className="mt-1">
                 Phân loại nội dung báo cáo : {selectedReport.category}
