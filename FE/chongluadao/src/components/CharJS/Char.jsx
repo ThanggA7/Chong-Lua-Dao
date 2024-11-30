@@ -5,19 +5,18 @@ ChartJS.register(ArcElement, Tooltip);
 
 function Char() {
   const datascam = useFetch("https://api.nhuthangluu.id.vn/api/reports");
-  console.log(datascam.length);
+
+  const dsc = datascam.reduce((acc, report) => {
+    const category = report.category || "Khác";
+    acc[category] = (acc[category] || 0) + 1;
+    return acc;
+  }, {});
   const data = {
-    labels: [
-      "Lừa đảo tiền",
-      "Lừa lấy thông tin",
-      "Nội dung xấu",
-      "Đường dẫn nguy hiểm",
-      "Giả mạo lừa đảo",
-    ],
+    labels: Object.keys(dsc),
     datasets: [
       {
         label: "Thống kê lừa đảo",
-        data: [80.3, 16.2, 2.5, 0.5, 0.5],
+        data: Object.values(dsc),
         backgroundColor: [
           "rgba(54, 162, 235, 0.2)",
           "rgba(255, 99, 132, 0.2)",
@@ -47,12 +46,12 @@ function Char() {
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#1F3E51]"></div>
 
-            <p className="text-white">Lừa đảo tiền (scam)</p>
+            <p className="text-white">Giả mạo (counterfeit )</p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#512C33]"></div>
 
-            <p className="text-white">Lừa lấy thông tin (phishing)</p>
+            <p className="text-white">Chứa mã độc (Contains malicious code)</p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#514628]"></div>
@@ -62,12 +61,12 @@ function Char() {
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#2D4544]"></div>
 
-            <p className="text-white">Đường dẫn nguy hiểm (dangerous_link)</p>
+            <p className="text-white">Lừa đảo (Cheat)</p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#3D3351]"></div>
 
-            <p className="text-white">Giả mạo lừa đảo (impersonate_fake)</p>
+            <p className="text-white">Khác (Other)</p>
           </div>
         </div>
       </div>

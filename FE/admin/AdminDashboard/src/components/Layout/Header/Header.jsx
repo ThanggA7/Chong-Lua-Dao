@@ -7,7 +7,7 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Header() {
+function Header({ onLogout }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -24,18 +24,25 @@ function Header() {
           <p className="font-medium xl:block hidden">CHONG LUA DAO</p>
         </div>
 
-
         <div className="ml-auto flex items-center gap-[16px]">
           <button>
             <FontAwesomeIcon icon={faBell} className="w-[24px] h-[24px]" />
           </button>
-          <button>
-            <img
-              className="w-[32px] h-[32px] object-cover rounded-full"
-              src="https://picsum.photos/200"
-              alt=""
-            />
-          </button>
+          <div className="group">
+            <button>
+              <img
+                className="w-[32px] h-[32px] object-cover rounded-full"
+                src="https://picsum.photos/200"
+                alt=""
+              />
+            </button>
+
+            <div className=" absolute bottom-[-25px] border hidden group-hover:block">
+              <button className=" font-medium  " onClick={onLogout}>
+                Đăng Xuất
+              </button>
+            </div>
+          </div>
         </div>
       </header>
 
@@ -52,6 +59,9 @@ function Header() {
           <Link to="/value" className="mb-2 font-medium">
             Report Value
           </Link>
+          <button className="mb-2 font-medium" onClick={onLogout}>
+            Đăng Xuất
+          </button>
         </div>
       )}
     </>

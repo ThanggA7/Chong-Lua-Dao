@@ -1,31 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
-  const [account, setAccount] = useState({
-    username: "",
-    password: "",
-  });
+const Login = ({ setIsLoggedIn }) => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setAccount({
-      ...account,
-      [name]: value,
-    });
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/login", {
+        username,
+        password,
+      });
+      localStorage.setItem("isAuthenticated", "true");
+      setIsLoggedIn(true);
+      setErrorMessage("");
+      navigate("/value");
+    } catch (error) {}
   };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("Account submitted:", account);
-  };
-
+  useEffect(() => {
+    const savedAuth = localStorage.getItem("isAuthenticated");
+    if (savedAuth === "true") {
+      setIsAuthenticated(true);
+      navigate("/value");
+    }
+  }, []);
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md p-8">
         <h2 className="text-2xl font-bold text-gray-800 text-center">
           Admin Login
+          <h2 className="text-lg font-bold">Đăng nhập</h2>
         </h2>
-        <form className="mt-6" onSubmit={handleSubmit}>
+        <div className="mt-6">
           <div className="mb-4">
             <label
               htmlFor="username"
@@ -39,8 +50,8 @@ const Login = () => {
               name="username"
               className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Enter your username"
-              value={account.username}
-              onChange={handleInputChange}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
             />
           </div>
           <div className="mb-4">
@@ -56,23 +67,18 @@ const Login = () => {
               name="password"
               className="mt-1 block w-full px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="••••••••"
-              value={account.password}
-              onChange={handleInputChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <button
-            type="submit"
+            onClick={handleSubmit}
+            disabled={isLoading}
             className="w-full py-2 mt-4 text-white bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
           >
-            Sign In
+            {isLoading ? "Đang đăng nhập..." : "Đăng nhập"}
           </button>
-        </form>
-        <p className="mt-4 text-sm text-center text-gray-600">
-          Forgot your password?{" "}
-          <a href="#" className="text-blue-500 hover:underline">
-            Reset it here
-          </a>
-        </p>
+        </div>
       </div>
     </div>
   );

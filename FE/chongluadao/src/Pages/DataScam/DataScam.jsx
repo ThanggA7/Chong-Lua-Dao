@@ -10,7 +10,7 @@ function DataScam() {
   const [value, setValue] = useState([]);
 
   return (
-    <div className={`container p-3  ${context.themes} lg:min-h-[70vh] `}>
+    <div className={`container p-3  ${context.themes} lg:min-h-[100vh] `}>
       <h1 className="text-[24px] dark:text-white text-black">Thống kê</h1>
 
       <div className="w-full h-[1px] bg-[#dedeed8f] my-[1em]"></div>
