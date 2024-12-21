@@ -6,12 +6,15 @@ import "swiper/css";
 function Download() {
   const context = useContext(ThemeContext);
   return (
-    <div className={`container p-3 ${context.themes}` }>
+    <div className={`container p-3 ${context.themes}`}>
       <h1 className="dark:text-white lg:text-[32px] text-[20px]  mt-[15px] font-Roboto">
         Tải về tiện ích miễn phí của ChongLuaDao
       </h1>
 
-      <a className="flex items-center justify-center" href="#!">
+      <a
+        className="flex items-center justify-center"
+        href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+      >
         <img
           src="https://chongluadao.vn/wp-content/uploads/2021/04/tai-ve-e1614160344303.png"
           alt=""
@@ -25,29 +28,32 @@ function Download() {
 
         <ul className="text-[20px] dark:text-[#B5B1A8]">
           <li>
-            + Nếu bạn xài Android: tải app
-            <a className="text-[#00c3ff]" href="#!">
-              {" "}
-              tại đây
-            </a>
-          </li>
-          <li>
             + Nếu bạn xài Chrome, Brave, CocCoc và Edge, vui lòng tải về
-            <a className="text-[#00c3ff]" href="#!">
+            <a
+              className="text-[#00c3ff]"
+              href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+            >
               {" "}
               tại đây
             </a>
           </li>
           <li>
             + Nếu bạn xài Firefox, vui lòng tải về
-            <a className="text-[#00c3ff]" href="#!">
+            <a
+              className="text-[#00c3ff]"
+              href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+            >
               {" "}
               tại đây
             </a>
           </li>
           <li>
             + Ngoài ra bạn cũng có thể kiểm tra trang web không an toàn
-            <a className="text-[#00c3ff]" href="#!">
+            <a
+              className="text-[#00c3ff]"
+              target="_blank"
+              href="https://scam.vn/"
+            >
               {" "}
               tại đây
             </a>
@@ -138,28 +144,46 @@ function Download() {
         </p>
 
         <div className="w-full h-[605px] bg-[#B5B1A8] rounded-[25px] mt-[20px]">
-          <img
-            className="w-full h-full object-cover rounded-[25px] "
-            src="https://chongluadao.vn/wp-content/uploads/2021/04/huong-dan-su-dung-cld-dektop.jpg"
-            alt=""
-          />
+          <iframe
+          className="rounded-[25px]"
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/QNOU0siRJ0E?si=EEfAmtJuJlGKdQ-p"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
 
       <p className="dark:text-[#B5B1A8] mt-[20px]">
         Ngoài ra có còn những hướng dẫn cho trình duyệt{" "}
-        <a className="text-[#7ab942]" href="#!">
+        <a
+          className="text-[#7ab942]"
+          href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+        >
           Microsoft
         </a>{" "}
-        <a className="text-[#7ab942]" href="#!">
+        <a
+          className="text-[#7ab942]"
+          href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+        >
           Edge
         </a>
         ,{" "}
-        <a className="text-[#7ab942]" href="#!">
+        <a
+          className="text-[#7ab942]"
+          href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+        >
           Brave
         </a>
         , Cốc Cốc trên Google Chrome Webstore tại{" "}
-        <a className="text-[#7ab942]" href="#!">
+        <a
+          className="text-[#7ab942]"
+          href="https://drive.google.com/drive/folders/1S-jw3fpluMyg106Y51nS0h6yHfxDsTkp?usp=drive_link"
+        >
           Youtube
         </a>
         .
