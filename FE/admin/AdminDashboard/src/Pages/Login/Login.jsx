@@ -12,10 +12,13 @@ const Login = ({ setIsLoggedIn }) => {
   const handleSubmit = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.post("http://127.0.0.1:5000/login", {
-        username,
-        password,
-      });
+      const response = await axios.post(
+        "https://api.nhuthangluu.id.vn/api/login",
+        {
+          username,
+          password,
+        }
+      );
       localStorage.setItem("isAuthenticated", "true");
       setIsLoggedIn(true);
       setErrorMessage("");

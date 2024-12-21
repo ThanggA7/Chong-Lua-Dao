@@ -37,7 +37,7 @@ function Header({ onLogout }) {
               />
             </button>
 
-            <div className=" absolute bottom-[-25px] border hidden group-hover:block">
+            <div className=" absolute right-0 bottom-[-15px] border hidden group-hover:block">
               <button className=" font-medium  " onClick={onLogout}>
                 Đăng Xuất
               </button>
