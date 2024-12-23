@@ -70,7 +70,6 @@ function ValueCSC() {
 
   return (
     <div className="mt-[20px]">
-      {/* Search bar */}
       <div className="flex items-center gap-1">
         <input
           className="w-[250px] text-black text-[16px] font-Roboto border-black rounded-sm h-[30px]"
@@ -93,7 +92,6 @@ function ValueCSC() {
       {loading && <p>Loading data...</p>}
       {error && <p className="text-red-500">{error}</p>}
 
-      {/* Table */}
       <div className="mt-[20px]">
         <DataTable
           columns={columns}

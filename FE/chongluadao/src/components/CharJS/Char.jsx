@@ -46,22 +46,22 @@ function Char() {
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#1F3E51]"></div>
 
-            <p className="text-white">Giả mạo (counterfeit )</p>
+            <p className="text-white"> Lừa đảo (Cheat)</p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#512C33]"></div>
 
-            <p className="text-white">Chứa mã độc (Contains malicious code)</p>
+            <p className="text-white">Giả mạo (counterfeit )</p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#514628]"></div>
 
-            <p className="text-white">Nội dung xấu (bad_sensitive_content)</p>
+            <p className="text-white">Chứa mã độc (Contains malicious code) </p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#2D4544]"></div>
 
-            <p className="text-white">Lừa đảo (Cheat)</p>
+            <p className="text-white">Nội dung xấu (bad_sensitive_content) </p>
           </div>
           <div className="flex items-center gap-3">
             <div className="w-[15px] h-[15px] rounded-full bg-[#3D3351]"></div>
