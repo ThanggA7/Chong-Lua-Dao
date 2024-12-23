@@ -1,26 +1,40 @@
 import DataTable from "react-data-table-component";
-import useFetch from "../../hooks/useFetch";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
+
 function ValueCSC() {
   const [delvalue, setDelvalue] = useState("");
-  const [newvalue, setnewValue] = useState([]);
-  const [valueCSC, setvalueCSC] = useState([]);
+  const [newvalue, setNewValue] = useState([]);
+  const [valueCSC, setValueCSC] = useState([]);
   const [resetPaginationToggle, setResetPaginationToggle] = useState(false);
   const [search, setSearch] = useState([]);
-  useEffect(() => {
-    const CSC = async () => {
-      try {
-        const csc = await axios.get(
-          "https://chongluadao.vn/datatables-server-side-processing?type=blacklist&draw=1&columns%5B0%5D%5Bdata%5D=0&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=1&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B2%5D%5Bdata%5D=2&columns%5B2%5D%5Bname%5D=&columns%5B2%5D%5Bsearchable%5D=true&columns%5B2%5D%5Borderable%5D=false&columns%5B2%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B2%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B3%5D%5Bdata%5D=3&columns%5B3%5D%5Bname%5D=&columns%5B3%5D%5Bsearchable%5D=true&columns%5B3%5D%5Borderable%5D=true&columns%5B3%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B3%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B4%5D%5Bdata%5D=4&columns%5B4%5D%5Bname%5D=&columns%5B4%5D%5Bsearchable%5D=true&columns%5B4%5D%5Borderable%5D=true&columns%5B4%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B4%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=17012&search%5Bvalue%5D=&search%5Bregex%5D=false&_=1732542948227"
-        );
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-        setvalueCSC(csc.data.data);
-      } catch (error) {}
+  useEffect(() => {
+    const fetchCSC = async () => {
+      try {
+        setLoading(true);
+        setError("");
+        const response = await axios.get(
+          "https://chongluadao.vn/datatables-server-side-processing?type=blacklist&draw=1&columns%5B0%5D%5Bdata%5D=0&columns%5B1%5D%5Bdata%5D=1&columns%5B2%5D%5Bdata%5D=2&columns%5B3%5D%5Bdata%5D=3&columns%5B4%5D%5Bdata%5D=4&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=desc&start=0&length=5000",
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        setValueCSC(response.data.data);
+      } catch (err) {
+        setError("Error fetching data. Please try again later.");
+      } finally {
+        setLoading(false);
+      }
     };
-    CSC();
+
+    fetchCSC();
   }, []);
 
   useEffect(() => {
@@ -31,6 +45,13 @@ function ValueCSC() {
     }));
     setSearch(formattedData);
   }, [valueCSC]);
+
+  useEffect(() => {
+    const filteredData = search.filter((row) =>
+      row.link.toLowerCase().includes(delvalue.toLowerCase())
+    );
+    setNewValue(filteredData);
+  }, [delvalue, search]);
 
   const columns = [
     {
@@ -49,25 +70,15 @@ function ValueCSC() {
 
   return (
     <div className="mt-[20px]">
+      {/* Search bar */}
       <div className="flex items-center gap-1">
         <input
-          className="w-[250px] text-black text-[16px] font-Roboto border-black  rounded-sm h-[30px]"
+          className="w-[250px] text-black text-[16px] font-Roboto border-black rounded-sm h-[30px]"
           placeholder="Tìm kiếm thông tin lừa đảo..."
           value={delvalue}
           type="text"
-          onChange={(event) => {
-            const newData = search.filter((row) => {
-              return row.link
-                .toLowerCase()
-                .includes(event.target.value.toLowerCase());
-            });
-
-            setDelvalue(event.target.value);
-
-            setnewValue(newData);
-          }}
+          onChange={(event) => setDelvalue(event.target.value)}
         />
-
         <button
           onClick={() => {
             setResetPaginationToggle(!resetPaginationToggle);
@@ -78,6 +89,11 @@ function ValueCSC() {
           <FontAwesomeIcon className="dark:text-white" icon={faX} />
         </button>
       </div>
+
+      {loading && <p>Loading data...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+
+      {/* Table */}
       <div className="mt-[20px]">
         <DataTable
           columns={columns}
