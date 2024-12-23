@@ -27,6 +27,16 @@ function SideBar() {
               </button>
             </NavLink>
           </li>
+          <li className=" mt-[10px] hover:text-[#0E9F6E] hover:bg-[#dededed5] rounded-lg">
+            <NavLink
+              to="/delete"
+              className={({ isActive }) => (isActive ? "text-[#0E9F6E] " : "")}
+            >
+              <button className="p-2">
+                <FontAwesomeIcon icon={faFile} /> Delete Report
+              </button>
+            </NavLink>
+          </li>
         </ul>
       </div>
     </>
