@@ -11,7 +11,7 @@ const NewsEditor = () => {
   const [content, setContent] = useState("");
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
-  const POSTNEWS = async () => {
+  const POSTNEWS = async (title , thumbnai ,content) => {
     try {
       const res = await axios.post(
         "https://api.nhuthangluu.id.vn/api/admin/post",
