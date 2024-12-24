@@ -26,8 +26,8 @@ function Home() {
         </h2>
         <div>
           <img
-            className="w-[700px] h-[500px] object-cover rounded-xl"
-            src={image.home1}
+            className="w-[750px] h-[500px] object-cover rounded-xl"
+            src="https://chongluadao.vn/wp-content/uploads/2021/04/Chinhsachbaomat-home.png"
             alt=""
           />
         </div>
@@ -122,65 +122,22 @@ function Home() {
             Cách thức hoạt động
           </p>
           <p className="text-[20px] font-Roboto text-[#606060] dark:text-[#E2E8F0]  text-center mt-[20px]">
-            Tiện ích Chongluadao sẽ cảnh báo khi bạn truy cập các trang web nguy
+            Tiện ích Bảo Vệ Số sẽ cảnh báo khi bạn truy cập các trang web nguy
             hiểm, lừa đảo, phần mềm độc hại, giả mạo, có nội dung vi phạm,…
           </p>
         </div>
-        <div className=" flex flex-col lg:flex-row justify-between items-center mt-[20px] gap-4">
-          <div className="flex flex-col items-center p-5 w-full bg-white lg:bg-transparent rounded-xl">
-            <div>
-              <div className="w-[25px] h-[25px] bg-[green] rounded-full lg:block hidden "></div>
-              <div className="px-3 py-2 bg-green-500 rounded-full lg:hidden">
-                <p className="lg:hidden  font-OpenSans text-[20px] font-bold">
-                  01
-                </p>
-              </div>
-            </div>
-            <img
-              className="w-[152px] h-[216px] object-cover"
-              src="https://chongluadao.vn/wp-content/uploads/2021/04/mau-xanh-la.png"
-              alt=""
-            />
-            <p className="mt-[10px] text-[18px] font-Roboto md:dark:text-[#E2E8F0] dark:text-black ">
-              Có nghĩa là "an toàn"
-            </p>
-          </div>
-          <div className="flex flex-col items-center p-5 w-full bg-white lg:bg-transparent rounded-xl">
-            <div>
-              <div className="w-[25px] h-[25px] bg-[#8F9597] rounded-full lg:block hidden "></div>
-              <div className="px-3 py-2 bg-gray-500 rounded-full lg:hidden">
-                <p className="lg:hidden  font-OpenSans text-[20px] font-bold">
-                  02
-                </p>
-              </div>
-            </div>
-            <img
-              className="w-[152px] h-[216px] object-cover"
-              src="https://chongluadao.vn/wp-content/uploads/2021/04/mau-xam-new.png"
-              alt=""
-            />
-            <p className="mt-[10px] text-[18px] font-Roboto md:dark:text-[#E2E8F0] dark:text-black ">
-              Cho biết hãy "cẩn thận"
-            </p>
-          </div>
-          <div className="flex flex-col items-center p-2 w-full bg-white lg:bg-transparent rounded-xl">
-            <div>
-              <div className="w-[25px] h-[25px] bg-[red] rounded-full lg:block hidden "></div>
-              <div className="px-3 py-2 bg-red-500 rounded-full lg:hidden">
-                <p className="lg:hidden  font-OpenSans text-[20px] font-bold">
-                  03
-                </p>
-              </div>
-            </div>
-            <img
-              className="w-[152px] h-[216px] object-cover"
-              src="https://chongluadao.vn/wp-content/uploads/2021/04/mau-do-new.png"
-              alt=""
-            />
-            <p className="mt-[10px] text-[18px] font-Roboto md:dark:text-[#E2E8F0] dark:text-black ">
-              Cho thấy "nguy hiểm"
-            </p>
-          </div>
+        <div className="w-full h-[500px] mt-4 rounded-xl">
+          <iframe
+            className="rounded-xl"
+            width="100%"
+            height="100%"
+            src="https://www.youtube.com/embed/eB3lSDPy7OA?si=v16iGK6tckDoo9Qr"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
         </div>
       </div>
     </div>

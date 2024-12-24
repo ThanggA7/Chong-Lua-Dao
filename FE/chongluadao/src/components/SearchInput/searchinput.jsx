@@ -79,8 +79,8 @@ function SearchInput() {
           </p>
           <p>
             Website này có thể không an toàn theo đánh giá của cộng đồng, bạn
-            không nên truy cập. Hãy Cài Đặt tiện ích mở rộng ChongLuaDao.vn vào
-            trình duyệt của mình để được bảo vệ một cách tốt nhất.
+            không nên truy cập. Hãy Cài Đặt tiện ích mở rộng Bảo Vệ Số vào trình
+            duyệt của mình để được bảo vệ một cách tốt nhất.
           </p>
         </Modal>
       ) : (
@@ -93,9 +93,8 @@ function SearchInput() {
           <p>Website {link} an toàn</p>
           <p>
             Website này an toàn, tuy nhiên nó có thể thay đổi trong tương lai.
-            Vì vậy chúng tôi khuyến khích bạn nên cài đặt extension
-            Chongluadao.vn vào trình duyệt của mình để được bảo vệ theo thời
-            gian thực.
+            Vì vậy chúng tôi khuyến khích bạn nên cài đặt extension Bảo Vệ Số
+            vào trình duyệt của mình để được bảo vệ theo thời gian thực.
           </p>
         </Modal>
       )}

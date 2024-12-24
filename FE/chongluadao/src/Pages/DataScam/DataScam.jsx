@@ -67,7 +67,7 @@ function DataScam() {
 
             <div>
               <p className="dark:text-white">
-                Ngân hàng dữ liệu của ChongLuaDao
+                Ngân hàng dữ liệu của Chống Lừa Đảo
               </p>
 
               <ValueScam />

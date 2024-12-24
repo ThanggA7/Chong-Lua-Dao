@@ -61,12 +61,12 @@ function Report() {
           </a>{" "}
           để biết trang có an toàn hay không . Nếu trang không nằm trong danh
           sách của chúng tôi, bạn có thể thực hiện những bước sau để báo cáo cho
-          chúng tôi. ChongLuaDao sẽ xét duyệt kỹ lưỡng và đưa ra phán quyết cuối
+          chúng tôi. Chống Lừa Đảo sẽ xét duyệt kỹ lưỡng và đưa ra phán quyết cuối
           cùng để đánh giá một báo cáo là nguy hiểm, lừa đảo hay không an toàn.
           Nếu báo cáo là nguy hiểm và không an toàn cho người sử dụng,
-          ChongLuaDao sẽ đưa vào danh sách đen (blacklist) trên cơ sở dữ liệu
+          Chống Lừa Đảo sẽ đưa vào danh sách đen (blacklist) trên cơ sở dữ liệu
           của chúng tôi. Và dưới đây là hai cách báo cáo hiện tại của dự án
-          ChongLuaDao.
+          Chống Lừa Đảo.
         </p>
 
         <div className="mt-[20px] dark:text-white">
@@ -254,10 +254,10 @@ function Report() {
                     </p>
                     <p>
                       4. Bạn đồng ý nhận thông tin (SMS, email, v.v.) từ
-                      ChongLuaDao.
+                      Chống Lừa Đảo.
                     </p>
                     <p>
-                      5. Bạn đồng ý rằng ChongLuaDao được phép tiếp quản thông
+                      5. Bạn đồng ý rằng Chống Lừa Đảo được phép tiếp quản thông
                       tin của người viết bài báo cáo lừa đảo và kẻ gian, bao gồm
                       thông tin cá nhân (tên, số điện thoại, số tài khoản, ID,
                       v.v.) để hỗ trợ ngăn chặn sự tái diễn hành vì lừa đảo,

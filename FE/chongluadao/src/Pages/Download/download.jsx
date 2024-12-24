@@ -8,7 +8,7 @@ function Download() {
   return (
     <div className={`container p-3 ${context.themes}`}>
       <h1 className="dark:text-white lg:text-[32px] text-[20px]  mt-[15px] font-Roboto">
-        Tải về tiện ích miễn phí của ChongLuaDao
+        Tải về tiện ích miễn phí của Bảo Vệ Số
       </h1>
 
       <a
@@ -115,7 +115,7 @@ function Download() {
 
       <div className="px-2 py-5 bg-[#2D2E2E] mt-[20px] hidden lg:block">
         <p className="text-[16px] dark:text-[#B5B1A8] text-white">
-          Hãy cài đặt tiện ích mở rộng ChongLuaDao.vn cho trình duyệt web ngay
+          Hãy cài đặt tiện ích mở rộng bảo vệ số cho trình duyệt web ngay
           hôm nay để bảo vệ chính mình!
         </p>
       </div>
@@ -124,13 +124,13 @@ function Download() {
         <ul>
           <li className="list-disc dark:text-[#B5B1A8]">
             <p className="text-[14px]">
-              Hiện tại tiện ích CLĐ chỉ hoạt động tốt trên những trình duyệt:
+              Hiện tại tiện ích BVS chỉ hoạt động tốt trên những trình duyệt:
               Google Chrome, Microsoft Edge, Cốc Cốc, Brave, Opera và FireFox.
             </p>
           </li>
           <li className="list-disc dark:text-[#B5B1A8]">
             <p className="text-[14px]">
-              ChongLuaDao đang đợi được xét duyệt thêm ở những cửa hàng của
+              Bảo Vệ Số đang đợi được xét duyệt thêm ở những cửa hàng của
               những trình duyệt sau: Opera.
             </p>
           </li>
@@ -139,7 +139,7 @@ function Download() {
 
       <div className="mt-[25px]">
         <p className="text-center text-[14px] dark:text-[#B5B1A8] lg:text-[18px]">
-          Dưới đây là cách cài đặt và sử dụng tiện ích ChongLuaDao.Vn cho trình
+          Dưới đây là cách cài đặt và sử dụng tiện ích Bảo Vệ Số cho trình
           duyệt Chrome trên Google Chrome Webstore
         </p>
 
