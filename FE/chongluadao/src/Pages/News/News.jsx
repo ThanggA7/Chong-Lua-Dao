@@ -36,12 +36,10 @@ const News = () => {
   }, []);
   console.log(news);
 
-
-
   return (
     <div className="min-h-screen  text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl font-bold mb-8 text-center text-[green``````````1]">
+        <h2 className="text-3xl font-bold mb-8 text-center text-[green]">
           Tin Tức
         </h2>
         <div className="space-y-8">
@@ -71,7 +69,7 @@ const News = () => {
                   </span>{" "}
                   &bull; <span>0 Comments</span>
                 </p>
-                <p className="text-gray-300 w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">
+                <p className="text-gray-300 w-[400px] overflow-hidden text-ellipsis line-clamp-2">
                   {article.description}
                 </p>
               </div>
