@@ -68,7 +68,7 @@ function Header() {
             </li>
             <li className="hover:text-[green]">
               <NavLink
-                to="/news "
+                to="/news"
                 className={({ isActive }) => (isActive ? "text-[green]" : "")}
               >
                 Tin Tức
@@ -126,6 +126,7 @@ function Header() {
                   "/download-extension",
                   "/report",
                   "/data",
+                  "/news",
                   "/contact",
                 ].map((path, index) => (
                   <li key={index} className="hover:text-[green]">
