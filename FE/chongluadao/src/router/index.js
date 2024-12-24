@@ -4,7 +4,7 @@ import DataScam from "../Pages/DataScam/DataScam";
 import Download from "../Pages/Download/download";
 import Home from "../Pages/Home/Home";
 import News from "../Pages/News/News";
-import NewsDetail from "../Pages/News/News1";
+import NewsDetail from "../Pages/News/NewsDetail";
 import Report from "../Pages/Report/report";
 
 const PublicRouter = [
@@ -14,6 +14,7 @@ const PublicRouter = [
   { path: "/report", component: Report },
   { path: "/contact", component: Contacts },
   { path: "/news", component: News },
+  { path: "/news/:id", component: NewsDetail },
   { path: "*", component: NOTFOUND },
 ];
 

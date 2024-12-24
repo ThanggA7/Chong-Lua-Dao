@@ -36,6 +36,8 @@ const News = () => {
   }, []);
   console.log(news);
 
+
+
   return (
     <div className="min-h-screen  text-white py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
@@ -63,10 +65,15 @@ const News = () => {
                   </Link>
                 </h3>
                 <p className="text-gray-400 text-sm mb-4">
-                  <span>Admin</span> &bull; <span>{article.createdAt}</span> &bull;{" "}
-                  <span>0 Comments</span>
+                  <span>Admin</span> &bull;{" "}
+                  <span>
+                    {new Date(article.createdAt).toLocaleDateString()}
+                  </span>{" "}
+                  &bull; <span>0 Comments</span>
                 </p>
-                <p className="text-gray-300 w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">{article.thumbnail}</p>
+                <p className="text-gray-300 w-[600px] overflow-hidden text-ellipsis whitespace-nowrap">
+                  {article.description}
+                </p>
               </div>
             </div>
           ))}
