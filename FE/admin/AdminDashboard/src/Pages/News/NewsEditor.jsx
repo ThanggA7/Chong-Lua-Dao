@@ -17,7 +17,7 @@ const NewsEditor = () => {
         "https://api.nhuthangluu.id.vn/api/admin/post",
         {
           title: title,
-          thumbnai: thumbnai,
+          thumbnail: thumbnai,
           content: content,
         }
       );
