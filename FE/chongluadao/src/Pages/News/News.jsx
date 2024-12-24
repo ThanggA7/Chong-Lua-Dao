@@ -69,7 +69,7 @@ const News = () => {
                   </span>{" "}
                   &bull; <span>0 Comments</span>
                 </p>
-                <p className="text-gray-300 w-[400px] overflow-hidden text-ellipsis line-clamp-2">
+                <p className="text-gray-300  overflow-hidden text-ellipsis line-clamp-2">
                   {article.description}
                 </p>
               </div>
