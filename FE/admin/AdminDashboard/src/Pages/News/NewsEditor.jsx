@@ -7,17 +7,17 @@ import axios from "axios";
 
 const NewsEditor = () => {
   const [title, setTitle] = useState("");
-  const [thumbnai, setThumbnai] = useState("");
+  const [thumbail, setThumbnail] = useState("");
   const [content, setContent] = useState("");
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
-  const POSTNEWS = async (title , thumbnai ,content) => {
+  const POSTNEWS = async (title , thumbail ,content) => {
     try {
       const res = await axios.post(
         "https://api.nhuthangluu.id.vn/api/admin/post",
         {
           title: title,
-          thumbnail: thumbnai,
+          thumbnail: thumbail,
           content: content,
         }
       );
@@ -25,7 +25,7 @@ const NewsEditor = () => {
   };
 
   const handleSubmit = () => {
-    POSTNEWS(title, thumbnai, content);
+    POSTNEWS(title, thumbail, content);
   };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
@@ -58,8 +58,8 @@ const NewsEditor = () => {
         <input
           type="text"
           id="title"
-          value={thumbnai}
-          onChange={(e) => setThumbnai(e.target.value)}
+          value={thumbnail}
+          onChange={(e) => setThumbnail(e.target.value)}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
           placeholder="Enter the article thumbnai"
         />
