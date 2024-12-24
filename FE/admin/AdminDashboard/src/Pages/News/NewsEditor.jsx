@@ -8,16 +8,18 @@ import axios from "axios";
 const NewsEditor = () => {
   const [title, setTitle] = useState("");
   const [thumbnail, setThumbnail] = useState("");
+  const [description, setDescription] = useState("");
   const [content, setContent] = useState("");
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
-  const POSTNEWS = async (title , thumbnail ,content) => {
+  const POSTNEWS = async (title, thumbnail, description, content) => {
     try {
       const res = await axios.post(
         "https://api.nhuthangluu.id.vn/api/admin/post",
         {
           title: title,
           thumbnail: thumbnail,
+          description : description,
           content: content,
         }
       );
@@ -25,7 +27,7 @@ const NewsEditor = () => {
   };
 
   const handleSubmit = () => {
-    POSTNEWS(title, thumbnail, content);
+    POSTNEWS(title, thumbnail,description, content);
   };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
@@ -62,6 +64,22 @@ const NewsEditor = () => {
           onChange={(e) => setThumbnail(e.target.value)}
           className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
           placeholder="Enter the article thumbnai"
+        />
+      </div>
+      <div className="mb-4">
+        <label
+          htmlFor="title"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Description
+        </label>
+        <input
+          type="text"
+          id="title"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+          className="mt-1 p-2 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          placeholder="Enter the article description"
         />
       </div>
       <div className="mb-6">
