@@ -7,17 +7,17 @@ import axios from "axios";
 
 const NewsEditor = () => {
   const [title, setTitle] = useState("");
-  const [thumbail, setThumbnail] = useState("");
+  const [thumbnail, setThumbnail] = useState("");
   const [content, setContent] = useState("");
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
-  const POSTNEWS = async (title , thumbail ,content) => {
+  const POSTNEWS = async (title , thumbnail ,content) => {
     try {
       const res = await axios.post(
         "https://api.nhuthangluu.id.vn/api/admin/post",
         {
           title: title,
-          thumbnail: thumbail,
+          thumbnail: thumbnail,
           content: content,
         }
       );
@@ -25,7 +25,7 @@ const NewsEditor = () => {
   };
 
   const handleSubmit = () => {
-    POSTNEWS(title, thumbail, content);
+    POSTNEWS(title, thumbnail, content);
   };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
