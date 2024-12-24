@@ -11,10 +11,6 @@ const NewsEditor = () => {
   const [content, setContent] = useState("");
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
 
-  const handleSubmit = () => {
-    POSTNEWS(title, thumbnai, content);
-  };
-
   const POSTNEWS = async () => {
     try {
       const res = await axios.post(
@@ -28,6 +24,9 @@ const NewsEditor = () => {
     } catch (error) {}
   };
 
+  const handleSubmit = () => {
+    POSTNEWS(title, thumbnai, content);
+  };
   return (
     <div className="max-w-4xl mx-auto p-6 bg-white shadow-md rounded-md">
       <h1 className="text-2xl font-bold text-gray-800 mb-4">
